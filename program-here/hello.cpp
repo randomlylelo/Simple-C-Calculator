@@ -49,6 +49,7 @@ int main ()
             {
                 break;
             }
+            cout <<"Retsarting the program..." << "\n";
         }
 
     }
@@ -57,5 +58,4 @@ int main ()
 
 // compile using "g++ hello.cpp -o hello"
 // the -o function is a way to name the file 
-
 // to run do "./hello"
