@@ -5,57 +5,76 @@ using namespace std;
 
 int main ()
 {
-    cout <<"Mathator 9000 v1\n";
+    cout <<"\nMathator 9000 v1\n";
     int fir_num;
     int sec_num;
     string operation;
     string correct;
     string correction;
-    while(1==1){
-        cout <<"Please choose what operation you would like to do\nNOTE PLEASE TYPE the word not the symbol\naddition(+)\nsubtraction(-)\nmuliplication(*)\ndivision(/)\n";
-        cin >> operation;
-        cout <<"Please choose a number: " << "\n";
-        cin >> fir_num;
-        cout <<"Please choose another number: " << "\n";
-        cin >> sec_num;
-        cout <<"Your first number is: " << fir_num << "\n" <<"Your second number is: " << sec_num << "\n" <<"Your choice of operation is: " << operation << "\n";
-        cout <<"Is this correct? (answer with 'yes' or 'no')" << "\n";
-        cin >> correct;
-        if (correct == "yes")
+    string username;
+    string password;
+    string auth;
+    cout <<"Please login" << "\n" << "Username: ";
+    cin >> username;
+    cout <<"Password: ";
+    cin >> password;
+    if (username == "root" && password == "root")
+    {
+        auth = "true";
+        cout <<"Access Granted..." <<"\n";
+        if(auth == "true")
         {
-            if (operation == "addition")
+            cout <<"Please choose what operation you would like to do\nNOTE PLEASE TYPE the word not the symbol\naddition(+)\nsubtraction(-)\nmuliplication(*)\ndivision(/)\n";
+            cin >> operation;
+            cout <<"Please choose a number: " << "\n";
+            cin >> fir_num;
+            cout <<"Please choose another number: " << "\n";
+            cin >> sec_num;
+            cout <<"Your first number is: " << fir_num << "\n" <<"Your second number is: " << sec_num << "\n" <<"Your choice of operation is: " << operation << "\n";
+            cout <<"Is this correct? (answer with 'yes' or 'no')" << "\n";
+            cin >> correct;
+            cout <<"\n";
+            if (correct == "yes")
             {
-                cout << fir_num << "+" << sec_num << "=" << fir_num + sec_num << "\n";
+                if (operation == "addition")
+                {
+                    cout << fir_num << " + " << sec_num << " = " << fir_num + sec_num << "\n";
+                }
+                if (operation == "subtraction")
+                {
+                    cout << fir_num << " - " << sec_num << " = " << fir_num - sec_num << "\n";
+                }
+                if (operation == "muliplication")
+                {
+                    cout << fir_num << " * " << sec_num << " = " << fir_num * sec_num << "\n";
+                }
+                if (sec_num != 0 && operation == "division")
+                {
+                    cout << fir_num << " / " << sec_num << " = " << fir_num / sec_num << "\n";
+                }
+                cout <<"\n";
+                return 0;
             }
-            if (operation == "subtraction")
+            if (correct == "no")
             {
-                cout << fir_num << "-" << sec_num << "=" << fir_num - sec_num << "\n";
+                cout <<"Would you like to contiune and retype everything? (answer with 'yes' or 'no')" <<"\n";
+                cin >> correction;
+                if (correction == "no")
+                {
+                    return 0;
+                }
+                cout <<"Restarting the program..." << "\n";
             }
-            if (operation == "muliplication")
-            {
-                cout << fir_num << "*" << sec_num << "=" << fir_num * sec_num << "\n";
-            }
-            if (operation == "division")
-            {
-                cout << fir_num << "/" << sec_num << "=" << fir_num / sec_num << "\n";
-            }
-            break;
+            
         }
-        if (correct == "no")
-        {
-            cout <<"Would you like to contiune and retype everything? (answer with 'yes' or 'no')" <<"\n";
-            cin >> correction;
-            if (correction == "no")
-            {
-                break;
-            }
-            cout <<"Retsarting the program..." << "\n";
-        }
-
     }
-
+        else
+    {
+        cout <<"Incorrect username or password" << "\n";
+    }
 }
 
 // compile using "g++ hello.cpp -o hello"
 // the -o function is a way to name the file 
+
 // to run do "./hello"
