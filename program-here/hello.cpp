@@ -3,80 +3,91 @@
 
 using namespace std;
 
-int main ()
+bool login (int logged)
 {
-    cout <<"\nMathator 9000 v1\n";
-    int fir_num;
-    int sec_num;
-    string operation;
-    string correct;
-    string correction;
     string username;
     string password;
-    cout <<"Please login" << "\n" << "Username: ";
+    cout <<"Please login" << endl << "Username: ";
     cin >> username;
     cout <<"Password: ";
     cin >> password;
     if (username == "root" && password == "root")
     {
-        cout <<"Access Granted..." <<"\n";
-        cout <<"Please choose what operation you would like to do\nNOTE PLEASE TYPE the word not the symbol\naddition(+)\nsubtraction(-)\nmuliplication(*)\ndivision(/)\n";
-        cin >> operation;
+        logged == true;
+        cout <<"Access Granted..." << "\n";
+        return true;
+    }
+    else
+    {
+        cout <<"Incorrect username or password" << "\n";
+        return false;
+    }
+}
+
+int addition (int fir_num, int sec_num)
+{
+    cout << fir_num << " + " << sec_num << " = " << fir_num + sec_num << "\n";
+}
+
+int subtraction (int fir_num, int sec_num)
+{
+    cout << fir_num << " - " << sec_num << " = " << fir_num - sec_num << "\n";
+}
+
+int muliplication (int fir_num, int sec_num)
+{
+    cout << fir_num << " * " << sec_num << " = " << fir_num * sec_num << "\n";
+}
+
+int division (int fir_num, int sec_num)
+{
+    if (sec_num != 0)
+    {
+        cout << fir_num << " / " << sec_num << " = " << fir_num / sec_num << "\n";
+    }
+    else
+    {
+        cout <<"Please restart the program and not put '0' as the second number! Thanks." << "\n";
+    }
+}
+
+int main ()
+{
+    int operation;
+    int fir_num;
+    int sec_num;
+    bool logged;
+    logged = login(logged);
+    if (logged == true)
+    {
         cout <<"Please choose a number: " << "\n";
         cin >> fir_num;
         cout <<"Please choose another number: " << "\n";
         cin >> sec_num;
-        cout <<"Your first number is: " << fir_num << "\n" <<"Your second number is: " << sec_num << "\n" <<"Your choice of operation is: " << operation << "\n";
-        cout <<"Is this correct? (answer with 'yes' or 'no')" << "\n";
-        cin >> correct;
-        cout <<"\n";
-        if (correct == "yes")
+        cout <<"What operation would you like to do?" << "\n";
+        cout << "1. addition(+)\n";
+        cout << "2. subtraction(-)\n";
+        cout << "3. muliplication(*)\n";
+        cout << "4. division(/)\n";
+        cout << "Selection: ";
+        cin >> operation;
+        switch (operation)
         {
-            if (operation == "addition")
-            {
-                cout << fir_num << " + " << sec_num << " = " << fir_num + sec_num << "\n";
-            }
-            if (operation == "subtraction")
-            {
-                cout << fir_num << " - " << sec_num << " = " << fir_num - sec_num << "\n";
-            }
-            if (operation == "muliplication")
-            {
-                cout << fir_num << " * " << sec_num << " = " << fir_num * sec_num << "\n";
-            }
-            if (operation == "division")
-            {
-                if (sec_num != 0)
-                {
-                    cout << fir_num << " / " << sec_num << " = " << fir_num / sec_num << "\n";
-                }
-                else
-                {
-                    cout <<"Please restart the program and not put '0' as the second number! Thanks." << "\n";
-                }
-            }
-            cout <<"\n";
-            return 0;
-        }
-        if (correct == "no")
-        {
-            cout <<"Would you like to contiune and retype everything? (answer with 'yes' or 'no')" <<"\n";
-            cin >> correction;
-            if (correction == "no")
-            {
+            case 1:
+                addition(fir_num, sec_num);
                 return 0;
-            }
-            cout <<"Restarting the program..." << "\n";
+                
+            case 2:
+                subtraction(fir_num, sec_num);
+                return 0;
+                
+            case 3:
+                muliplication(fir_num, sec_num);
+                return 0;
+                
+            case 4:
+                division(fir_num, sec_num);
+                return 0;
         }
-            
-    }
-        else
-    {
-        cout <<"Incorrect username or password" << "\n";
     }
 }
-
-// compile using "g++ hello.cpp -o hello"
-// the -o function is a way to name the file 
-
-// to run do "./hello"
